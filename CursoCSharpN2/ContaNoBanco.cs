@@ -3,37 +3,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace CursoCSharpN2
 {
     class ContaNoBanco
     {
         public int NumeroDaConta { get; private set; }
-        public string DonoDaConta { get; set; }
-        public char DepositoInicial { get; set; }
+        public string Titular { get; set; }
         public double Saldo { get; private set; }
 
-       public ContaNoBanco()
-        {
-
-        }
-
-        public ContaNoBanco(int numeroDaConta, string donaDaConta)
+        public ContaNoBanco(int numeroDaConta, string titular)
         {
             NumeroDaConta = numeroDaConta;
-            DonoDaConta = donaDaConta;
+            Titular = titular;
             Saldo = 0.0;
         }
 
-        public ContaNoBanco(int numeroDaConta, string donoDaConta, double saldo) : this(numeroDaConta, donoDaConta)
+        public ContaNoBanco(int numeroDaConta, string titular, double depositoInicial) : this(numeroDaConta, titular)
         {
-            Saldo = saldo;
+            Saldo += depositoInicial;
         }
 
-        public double Deposito (double deposito)
+        public void Deposito (double deposito)
         {
-            return Saldo += deposito;
+            Saldo += deposito;
         }
 
+        public void Saque(double saque)
+        {
+            Saldo = (Saldo - saque) - 5.00;
+        }
+
+        public override string ToString()
+        {
+            return "Conta: " + NumeroDaConta + ", Titular: " + Titular + ", Saldo: R$ " + Saldo.ToString("F2", CultureInfo.InvariantCulture);
+        }
     }
 }
