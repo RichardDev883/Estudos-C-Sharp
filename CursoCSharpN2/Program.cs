@@ -11,66 +11,35 @@ namespace CursoCSharpN2
     {
         static void Main(string[] args)
         {
-            ContaNoBanco conta;
+            Estudante[] vect = new Estudante[10];
 
-            Console.Write("Entre com o número da conta: ");
-            int numeroDaConta = int.Parse(Console.ReadLine());
-
-            Console.Write("Entre com o Titular da conta: ");
-            string titular = Console.ReadLine();
-
-            Console.Write("Deseja realizar depósito inicial? (S/N): ");
-            char resposta = char.Parse(Console.ReadLine());
-
-            if (resposta == 's' || resposta == 'S')
-            {
-                Console.Write("Digite o valor do depósito inicial: ");
-                double depositoInicial = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-                conta = new ContaNoBanco(numeroDaConta, titular, depositoInicial);
-            }
-            else
-            {
-                conta = new ContaNoBanco(numeroDaConta, titular);
-            }
-
+            Console.WriteLine("Quantos quartos vao ser alugados?");    
+            int n = int.Parse(Console.ReadLine());
             Console.WriteLine();
-            Console.WriteLine("Dados da Conta: ");
-            Console.WriteLine(conta);
-            Console.WriteLine();
-            Console.Write("Deseja realizar um Depósito Adicional? (S/N): ");
-            resposta = char.Parse(Console.ReadLine());
 
-            if (resposta == 's' || resposta == 'S')
+            for ( int i = 0; i < n; i++)
             {
-                Console.Write("Digite o Valor: ");
-                double deposito = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-
-                conta.Deposito(deposito);
+                Console.WriteLine("Alugel #" + (i+1) + ": ");
+                Console.Write("Nome do Estudante: ");
+                string nome =  Console.ReadLine();
+                Console.Write("Digite o email: ");
+                string email = Console.ReadLine();
+                Console.Write("Quarto: ");
+                int quarto = int.Parse(Console.ReadLine());
                 Console.WriteLine();
-                Console.WriteLine("Dados da Conta Atualizados Após Depósito Adicional: ");
-                Console.WriteLine(conta);
-            }
-            else
-            {
-                Console.WriteLine("Dados da conta inalterados: " + conta);
+
+                vect[quarto] = new Estudante(nome, email);
             }
 
-            Console.Write("Deseja realizar um saque? (S/N): ");
-            resposta = char.Parse(Console.ReadLine());
-            if (resposta == 's' || resposta == 'S')
+            Console.WriteLine("----------------");
+            Console.WriteLine("Quartos Alugados: ");
+            for (int i = 0; i < 10; i++)
             {
-                Console.Write("Digite o Valor para Saque: ");
-                double saque = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-                conta.Saque(saque);
-                Console.WriteLine();
-                Console.WriteLine("Dados da Conta Após o Saque: ");
-                Console.WriteLine(conta);
+                if (vect[i] != null)
+                {
+                    Console.WriteLine(i + ": " + vect[i]);
+                }
             }
-            else
-            {
-                Console.WriteLine("Programa finalizado.");
-            }
-   
         }
     }
 }
