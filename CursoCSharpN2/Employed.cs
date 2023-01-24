@@ -31,7 +31,7 @@ namespace CursoCSharpN2
                 + ", "
                 + Name
                 + ", "
-                + Salary.ToString("F2", CultureInfo.InvariantCulture);
+                + "R$ " + Salary.ToString("F2", CultureInfo.InvariantCulture);
         }
 
     }
