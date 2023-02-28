@@ -12,11 +12,23 @@ namespace ExercicioFinalSecao10.Entities
         public string Email { get; set; }
         public DateTime Birthday { get; set; }
 
-        public Client(string name, string email, DateTime birthday)
+        public Client()
         {
-            Name = name;
+        }
+        public Client(string clientName, string email, DateTime birthday)
+        {
+            Name = clientName;
             Email = email;
             Birthday = birthday;
+        }
+
+        public override string ToString()
+        {
+            return Name
+                + ", ("
+                + Birthday.ToString("dd/MM/yyyy")
+                + ") - "
+                + Email;
         }
     }
 }

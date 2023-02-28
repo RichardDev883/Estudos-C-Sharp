@@ -8,5 +8,13 @@ namespace ExercicioFinalSecao10.Entities
 {
     internal class Product
     {
+        public string Name { get; set; }
+        public double Price { get; set; }
+
+        public Product(string productName, double price)
+        {
+            Name = productName;
+            Price = price;
+        }
     }
 }
